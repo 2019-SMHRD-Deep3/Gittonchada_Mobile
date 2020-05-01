@@ -71,7 +71,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
             this.v = v;
            // button = v.findViewById(R.id.btn_conn);
             tv_location = v.findViewById(R.id.tv_location);
-            tv_weather = v.findViewById(R.id.tv_date);
+           // tv_weather = v.findViewById(R.id.tv_date);
            // tv_time = v.findViewById(R.id.tv_time);
             //tv_icon = v.findViewById(R.id.tv_icon);
             tv_temp = v.findViewById(R.id.tv_temp);
@@ -102,7 +102,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
 
        // btn_conn = v.findViewById(R.id.btn_conn);
         tv_location = v.findViewById(R.id.tv_location);
-        tv_weather = v.findViewById(R.id.tv_date);
+       // tv_weather = v.findViewById(R.id.tv_date);
         //tv_time = v.findViewById(R.id.tv_time);
         //tv_icon = v.findViewById(R.id.tv_icon);
         tv_temp = v.findViewById(R.id.tv_temp);
@@ -204,7 +204,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
 
                             tv_timezone.append( timezone   + "\n");
                             //tv_weather.append(Double.toString(day)   + "\n");
-                            tv_weather.append(dt + "\n");
+                        //    tv_weather.append(dt + "\n");
                             //tv_time.append(Double.toString(day)   + "\n");
                             tv_temp.append( temp   + "º"+ "\n");
                             tv_windspeed.append( Double.toString(wind_speed)  +"m/s" + "\n");
