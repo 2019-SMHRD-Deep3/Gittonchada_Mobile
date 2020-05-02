@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/item5"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="home" />
+
+    <item
         android:id="@+id/item1"
         android:icon="@drawable/ic_cloudy"
         android:title="@string/title_home" />
@@ -19,5 +24,7 @@
         android:id="@+id/item4"
         android:icon="@drawable/comm1"
         android:title="@string/title_notifications" />
+
+
 
 </menu>

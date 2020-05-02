@@ -37,5 +37,13 @@
             android:id="@+id/action_dashboardFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="org.techtown.project.firstFragment"
+        android:label="firstFragment" >
+        <action
+            android:id="@+id/action_firstFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
+    </fragment>
 
 </navigation>

@@ -15,7 +15,7 @@ public class Main extends AppCompatActivity {
     weatherFragment frag_home;
     communicationFragment frag_noti;
     predictFragment frag_black;
-
+    firstFragment frag_first;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +26,9 @@ public class Main extends AppCompatActivity {
         frag_dash = new smpFragment();
         frag_home = new weatherFragment();
         frag_noti = new communicationFragment();
+        frag_first = new firstFragment();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, frag_home).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, frag_first).commit();
 
         BottomNavigationView bnv = findViewById(R.id.nav_view);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -35,6 +36,7 @@ public class Main extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch(item.getItemId()){
+
                     case R.id.item1:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, frag_home).commit();
                         Toast.makeText(getApplicationContext(), "home", Toast.LENGTH_LONG).show();
@@ -49,6 +51,11 @@ public class Main extends AppCompatActivity {
                         return true;
                     case R.id.item4:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, frag_noti).commit();
+
+                        return true;
+
+                    case R.id.item5:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, frag_first).commit();
 
                         return true;
                 }
