@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="org.techtown.project.smpFragment"
+        android:name="org.techtown.project.smp.smpFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_smp" >
         <action
