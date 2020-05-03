@@ -6,228 +6,202 @@
     android:layout_height="600dp"
     android:background="@color/design_default_color_on_primary">
 
+        <lib.kingja.switchbutton.SwitchMultiButton
+            android:id="@+id/switchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="35dp"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:selectedColor="#eb7b00"
+            app:selectedTab="0"
+            app:strokeRadius="5dp"
+            app:strokeWidth="1dp"
+            app:switchTabs="@array/switch_tabs"
+            app:textSize="14sp" />
 
-    <lib.kingja.switchbutton.SwitchMultiButton
-        android:id="@+id/switchButton"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="35dp"
-        android:padding="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:selectedColor="#eb7b00"
-        app:selectedTab="0"
-        app:strokeRadius="5dp"
-        app:strokeWidth="1dp"
-        app:switchTabs="@array/switch_tabs"
-        app:textSize="14sp" />
+        android:layout_marginTop="20dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@id/tv_view"
+        app:layout_constraintStart_toStartOf="@id/switchButton"
+        app:layout_constraintTop_toBottomOf="@id/switchButton">
 
-    <TextView
-        android:id="@+id/temp2"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="138dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintEnd_toStartOf="@+id/time3"
-        app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintStart_toEndOf="@+id/time1"
-        app:layout_constraintTop_toBottomOf="@+id/img_icon" />
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/temp1"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="138dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintEnd_toStartOf="@+id/time2"
-        app:layout_constraintHorizontal_bias="0.404"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_icon" />
+        <LinearLayout
+            android:id="@+id/contentLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location">
 
-    <TextView
-        android:id="@+id/temp4"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="156dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toEndOf="@+id/time3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_windspeed" />
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
 
-    <TextView
-        android:id="@+id/temp3"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="156dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintEnd_toStartOf="@+id/time4"
-        app:layout_constraintStart_toEndOf="@+id/time2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:srcCompat="@drawable/de" />
 
-    <ImageView
-        android:id="@+id/img_icon"
-        android:layout_width="172dp"
-        android:layout_height="159dp"
-        android:layout_marginStart="36dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_timezone"
-        app:srcCompat="@drawable/de" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_temp"
-        android:layout_width="136dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="388dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                <TextView
+                    android:id="@+id/tv_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="60sp" />
 
-    <TextView
-        android:id="@+id/tv_windspeed"
-        android:layout_width="34dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
+                <TextView
+                    android:id="@+id/tv_windspeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/tv_cloud"
-        android:layout_width="66dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="16dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+                <TextView
+                    android:id="@+id/tv_cloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="28dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:text="운량"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintStart_toEndOf="@+id/img_icon"
-        app:layout_constraintTop_toBottomOf="@+id/tv_temp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="28dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:text="풍속"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintBottom_toBottomOf="@+id/img_icon"
-        app:layout_constraintStart_toEndOf="@+id/img_icon"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_timezone"
-        android:layout_width="166dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="92dp"
-        android:textColor="#000"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentLinearLayout">
+
+
+            <LinearLayout
+                android:id="@+id/tempLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/temp1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <TextView
+                    android:id="@+id/temp2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <TextView
+                    android:id="@+id/temp3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <TextView
+                    android:id="@+id/temp4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/timeLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/time1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <TextView
+                    android:id="@+id/time2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <TextView
+                    android:id="@+id/time3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <TextView
+                    android:id="@+id/time4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_view"
         android:layout_width="120dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/switchButton"
+        app:layout_constraintBottom_toBottomOf="@id/switchButton"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/tv_location"
+    <ProgressBar
+        android:id="@+id/weatherProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="344dp"
-        android:layout_marginTop="47dp"
-        android:text="TextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_temp" />
-
-    <TextView
-        android:id="@+id/time2"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="58dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintEnd_toStartOf="@+id/time3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/time1"
-        app:layout_constraintTop_toBottomOf="@+id/img_icon" />
-
-    <TextView
-        android:id="@+id/time1"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="58dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintEnd_toStartOf="@+id/time2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_icon" />
-
-    <TextView
-        android:id="@+id/time3"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="76dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintEnd_toStartOf="@+id/time4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/time2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/time4"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="76dp"
-        android:textColor="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/time3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_windspeed" />
-
-        <!--
-        -->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/de"
-        android:visibility="invisible"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/dream"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
