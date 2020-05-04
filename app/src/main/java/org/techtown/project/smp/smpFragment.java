@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.techtown.project.R;
 
@@ -78,21 +80,28 @@ public class smpFragment extends Fragment {
                     public void onResponse(String response) {
 
                         Log.v("hhd","응답 => " + response);
-                       /* String chValue = response.replace("\"","");
+                        Log.v("hhd","응답 => " + response.length());
+                        /* String chValue = response.replace("\"","");
                         chValue = chValue.replace("\\","");
                         */
 
-                        JSONObject jsonObject = null;
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 
 
+                            for(int i = 0; i<jsonArray.length();i++){
+                                JSONObject smp = jsonArray.getJSONObject(i);
+                                Log.v("hhd","future2"+smp.getString("future2"));
+                            }
 
-                            jsonObject = jsonArray.getJSONObject(0);
+
+                            /*jsonObject = jsonArray.getJSONObject(0);
                             Log.v("myValueTest",jsonArray.length()+"");
                             Log.v("myValueTest",jsonObject.toString());
+*/
                         }catch (Exception e){
-
+                            Log.v("hhd","실패");
+                            e.printStackTrace();
                         }
 
 
@@ -113,7 +122,7 @@ public class smpFragment extends Fragment {
         request.setShouldRetryServerErrors(true);
         request.setRetryPolicy(new com.android.volley.DefaultRetryPolicy(
 
-                20000 ,
+                50000 ,
 
                 com.android.volley.DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
 
