@@ -1,15 +1,26 @@
 package org.techtown.project.model;
 
+import org.techtown.project.Current;
+
 import java.util.ArrayList;
 
 public class Weather {
 
+    public double lat;
+    public double lon;
     public String timezone;
     public Current current;
     public ArrayList<Daily> daily;
     public ArrayList<Hourly> hourly;
 
+    // id	:	804
+    //  main	:	Clouds
+    // description	:overcast clouds
+    // icon	:	04d
+
     public static class Current {
+
+
         public Long dt;
         public Long sunrise;
         public Long sunset;
@@ -23,7 +34,22 @@ public class Weather {
         public Integer visibility;
         public Double wind_speed;
         public Integer wind_deg;
+        public ArrayList<Weather2> weather;
+
+        public static class Weather2 {
+            //id	:	804
+            // main	:	Clouds
+            //description	:	overcast clouds
+            // icon	:	04d
+            public Integer id;
+            public String main;
+            public String description;
+            public String icon;
+
+        }
     }
+
+
 
     public static class Daily {
         public Long dt;
@@ -45,6 +71,19 @@ public class Weather {
         public Long dt;
         public Double temp;
         public Double feels_like;
+        public ArrayList<Weather3> weather;
+
+        public static class Weather3 {
+            //id	:	804
+            // main	:	Clouds
+            //description	:	overcast clouds
+            // icon	:	04d
+            public Integer id;
+            public String main;
+            public String description;
+            public String icon;
+
+        }
     }
 
     public static class Temp {

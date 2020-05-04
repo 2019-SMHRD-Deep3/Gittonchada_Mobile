@@ -25,9 +25,10 @@
             app:textSize="14sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="60dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@id/tv_view"
         app:layout_constraintStart_toStartOf="@id/switchButton"
@@ -45,7 +46,8 @@
             android:id="@+id/contentLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="@android:color/darker_gray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:weightSum="2"
@@ -55,10 +57,10 @@
             <ImageView
                 android:id="@+id/img_icon"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
                 android:layout_weight="1"
 
-                app:srcCompat="@drawable/de" />
+                app:srcCompat="@color/design_default_color_background" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -73,19 +75,22 @@
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="60sp" />
 
+
                 <TextView
                     android:id="@+id/tv_windspeed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/design_default_color_on_secondary"
-                    android:textSize="14sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/tv_cloud"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/design_default_color_on_secondary"
-                    android:textSize="12sp" />
+                    android:textSize="15sp" />
+
+
             </LinearLayout>
 
 
@@ -93,58 +98,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/contentLinearLayout">
 
 
             <LinearLayout
-                android:id="@+id/tempLinearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:weightSum="4">
-
-                <TextView
-                    android:id="@+id/temp1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_weight="1"
-                    android:textColor="@color/design_default_color_on_secondary" />
-
-                <TextView
-                    android:id="@+id/temp2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_weight="1"
-                    android:textColor="@color/design_default_color_on_secondary" />
-
-                <TextView
-                    android:id="@+id/temp3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_weight="1"
-                    android:textColor="@color/design_default_color_on_secondary" />
-
-                <TextView
-                    android:id="@+id/temp4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_weight="1"
-                    android:textColor="@color/design_default_color_on_secondary" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/timeLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="60dp"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
@@ -152,35 +116,140 @@
                     android:id="@+id/time1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
-                    android:textColor="@color/design_default_color_on_secondary" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/time2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
-                    android:textColor="@color/design_default_color_on_secondary" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/time3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
-                    android:textColor="@color/design_default_color_on_secondary" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/time4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/imgLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="30dp"
+                    android:layout_height="31dp"
+                    android:layout_marginHorizontal="27dp"
+                    android:layout_weight="0"
+                    android:background="@color/design_default_color_background"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="30dp"
+                    android:layout_height="31dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_weight="0"
+                    android:background="@color/design_default_color_background"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="30dp"
+                    android:layout_height="31dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_weight="0"
+                    android:background="@color/design_default_color_background"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <ImageView
+                    android:id="@+id/img4"
+                    android:layout_width="30dp"
+                    android:layout_height="31dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_weight="0"
+                    android:background="@color/design_default_color_background"
                     android:textColor="@color/design_default_color_on_secondary" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tempLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/temp1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/temp2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/temp3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/temp4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="15sp" />
+            </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_asia"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/contentLinearLayout"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
