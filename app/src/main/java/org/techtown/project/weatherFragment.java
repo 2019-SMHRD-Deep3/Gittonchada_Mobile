@@ -65,6 +65,9 @@ public class weatherFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+
+        System.out.println();
+
         if (this.getContext() != null) {
             requestQueue = Volley.newRequestQueue(this.getContext());
         }
@@ -368,7 +371,7 @@ public class weatherFragment extends Fragment {
 
                     Integer addedTimeIndex = timeIndex;
                     if (switchMultiButton.getSelectedTab() == 1) {
-                        addedTimeIndex += 12;
+                        addedTimeIndex += 10;
                     }
                     int index =timeList.indexOf(timeIndex);
 
@@ -415,5 +418,7 @@ public class weatherFragment extends Fragment {
         Date df = new java.util.Date(dv);
         textView.setText(new SimpleDateFormat("hh").format(df)+"시");
     }
+
+
 }
 

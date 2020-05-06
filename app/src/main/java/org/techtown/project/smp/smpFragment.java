@@ -104,10 +104,6 @@ public class smpFragment extends Fragment {
                             e.printStackTrace();
                         }
 
-
-
-
-
                     }
                 },
                 new Response.ErrorListener(){ //에러발생시 호출될 리스너 객체
