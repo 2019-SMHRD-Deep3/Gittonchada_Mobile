@@ -1,8 +1,11 @@
 package org.techtown.project;
 
+import android.graphics.Color;
+import android.icu.text.AlphabeticIndex;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -19,7 +22,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.MarkerView;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.OnChartGestureListener;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -33,10 +46,15 @@ import lib.kingja.switchbutton.SwitchMultiButton;
 
 
 public class predictFragment extends Fragment {
-
+//bar//
     LineChart lineChart;
     ArrayList<Entry> entry_chart = new ArrayList<>();
     TextView tv_ac, tv_pr;
+    private  static  final String TAG = "predictFragment";
+    private LineChart mChart;
+    //bar//
+
+
 
     private TextView solar_radiation;
     private TextView solar_sunshine;
@@ -59,17 +77,34 @@ public class predictFragment extends Fragment {
         tv_pr = (TextView) v.findViewById(R.id.tv_pr);
         sendRequest();
 
+        mChart = (LineChart) v.findViewById(R.id.linechart);
+//        mChart.setOnChartGestureListener(predictFragment.this);
+//        mChart.setOnChartValueSelectedListener(predictFragment.this);
+
+        mChart.setDragEnabled(true);
+        mChart.setScaleEnabled(false);
+
+        ArrayList<Entry> yValue = new ArrayList<>();
+        yValue.add(new Entry(0,60f));
+        yValue.add(new Entry(1,70f));
+        yValue.add(new Entry(2,80f));
+        yValue.add(new Entry(3,90f));
+        yValue.add(new Entry(4,30f));
+        yValue.add(new Entry(5,60f));
+        yValue.add(new Entry(6,10f));
+        LineDataSet set1 = new LineDataSet(yValue,"Date Set 1");
+        set1.setFillAlpha(110);
+        set1.setColor(Color.RED);
+        set1.setLineWidth(3f);
+        set1.setValueTextSize(10f);
+        set1.setValueTextColor(Color.BLACK);
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(set1);
+        LineData data = new LineData(dataSets);
+        mChart.setData(data);
+
         return v;
     }
-//    public class NoConnectionError extends NetworkError {
-//        public NoConnectionError() {
-//            super();
-//        }
-//
-//        public NoConnectionError(Throwable reason) {
-//            super(reason);
-//        }
-//    }
     private void sendRequest() {
         String url = "http://172.30.1.23:9000/re/5/6/1/14.07/0/0.93/4/81/5";
         StringRequest request = new StringRequest(
@@ -84,7 +119,9 @@ public class predictFragment extends Fragment {
                         /* String chValue = response.replace("\"","");
                         chValue = chValue.replace("\\","");
                         */
+                        ///////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////
                         try {
                             // Response Parse //////////////////////////////////////////////////////////////////
                             predict = (new Gson()).fromJson(response, Predict.class);
