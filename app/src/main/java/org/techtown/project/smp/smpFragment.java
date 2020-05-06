@@ -93,10 +93,8 @@ public class smpFragment extends Fragment {
                         List<smp> list = Arrays.asList((smp));
                         //  Log.v("hhd","smp.future1 : " + smp.);
                         for(int i = 0; i<list.size(); i++) {
-
                             Log.v("hhd", "응답 => " + list.get(i).getFuture1());
                             Log.v("hhd", ""+ list.get(0).getPresent());
-
                         }
                     }
                 },
