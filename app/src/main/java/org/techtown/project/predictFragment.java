@@ -73,8 +73,8 @@ public class predictFragment extends Fragment {
         // Log.v("hhd","응답 => " + response);
         View v = inflater.inflate(R.layout.fragment_predict, container, false);
 
-        tv_ac = (TextView) v.findViewById(R.id.tv_ac);
-        tv_pr = (TextView) v.findViewById(R.id.tv_pr);
+//        tv_ac = (TextView) v.findViewById(R.id.tv_ac);
+//        tv_pr = (TextView) v.findViewById(R.id.tv_pr);
         sendRequest();
 
         mChart = (LineChart) v.findViewById(R.id.linechart);

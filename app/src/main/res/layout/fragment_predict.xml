@@ -6,111 +6,32 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/linechart"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="348dp"
+        android:layout_height="323dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp" />
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="169dp"
+        android:layout_marginEnd="29dp"/>
 
-    <SeekBar
-        android:id="@+id/seekBar2"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@+id/seekBar1"
-        android:layout_alignStart="@+id/seekBar1"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="-1dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="1dp"
-        android:layout_toLeftOf="@+id/tvYMax"
-        android:max="150"
-        android:paddingBottom="12dp" />
-
-    <SeekBar
-        android:id="@+id/seekBar1"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@+id/linechart"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="false"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toLeftOf="@+id/tvXMax"
-        android:max="500"
-        android:paddingBottom="12dp" />
-
-    <TextView
-        android:id="@+id/tvXMax"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/seekBar1"
-        android:layout_alignParentRight="true"
-        android:text="-"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="10dp"
-        android:gravity="right"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/tvYMax"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/seekBar2"
-        android:layout_alignParentRight="true"
-        android:text="-"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="10dp"
-        android:gravity="right"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/tv_ac"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_below="@+id/seekBar2"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="0dp"
-        android:textColor="#0C0C0C" />
-
-    <TextView
-        android:id="@+id/tv_pr"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_below="@+id/tv_ac"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="216dp"
-        android:textColor="@color/colorPrimary" />
-
-    <TextView
-        android:id="@+id/tv_ge"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_below="@+id/tv_ac"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="121dp"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginBottom="114dp"
-        android:textColor="@color/colorPrimary" />
+        android:layout_alignParentRight="false"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="3dp"
+        android:text="태양광발전량"
+        android:textAlignment="center"
+        android:textColor="#FF916E"
+        android:textSize="36sp" />
 
 
 </RelativeLayout>
