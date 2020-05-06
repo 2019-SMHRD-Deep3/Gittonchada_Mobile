@@ -39,12 +39,14 @@ public class Login extends AppCompatActivity {
             if(requestQueue == null){
                 requestQueue = Volley.newRequestQueue(getApplicationContext());
             }
+
             btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     testJson();
                 }
             });
+
             return true;
         }
 
