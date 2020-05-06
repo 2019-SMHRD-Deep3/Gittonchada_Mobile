@@ -54,7 +54,7 @@ public class firstFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:0109976"));
+                intent.setData(Uri.parse("tel:01099760685"));
                 //Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:12345"));
                 startActivity(intent);
             }
