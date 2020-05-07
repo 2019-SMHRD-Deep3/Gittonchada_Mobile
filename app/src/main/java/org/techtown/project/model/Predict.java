@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Predict {
 
 
-    public double solar_radiation;
-    public double solar_sunshine;
-    public double solar_generation;
+    public float solar_radiation;
+    public float solar_sunshine;
+    public float solar_generation;
 
 
 }
