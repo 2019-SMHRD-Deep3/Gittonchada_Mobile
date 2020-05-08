@@ -2,6 +2,7 @@ package org.techtown.project;
 
 import android.graphics.Color;
 import android.icu.text.AlphabeticIndex;
+import android.icu.text.Transliterator;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -77,6 +78,18 @@ public class predictFragment extends Fragment {
 //        tv_pr = (TextView) v.findViewById(R.id.tv_pr);
         sendRequest();
 
+ //       float solar_radiation = predict.solar_radiation;
+//        tv_pr.setText(solar_radiation+"d");
+ //       Log.v("hhd", "찍힘? => " + solar_radiation);
+
+//        Double solar_sunshine = predict.solar_sunshine;
+//        tv_ac.setText(solar_sunshine+"d");
+//        Log.v("hhd", "찍힘? => " + solar_sunshine);
+//
+//        Double solar_generation = predict.solar_generation;
+//        tv_ac.setText(solar_generation+"d");
+//        Log.v("hhd", "찍힘? => " + solar_generation);
+
         mChart = (LineChart) v.findViewById(R.id.linechart);
 //        mChart.setOnChartGestureListener(predictFragment.this);
 //        mChart.setOnChartValueSelectedListener(predictFragment.this);
@@ -93,10 +106,11 @@ public class predictFragment extends Fragment {
         yValue.add(new Entry(5,60f));
         yValue.add(new Entry(6,10f));
         LineDataSet set1 = new LineDataSet(yValue,"Date Set 1");
+
         set1.setFillAlpha(110);
         set1.setColor(Color.RED);
-        set1.setLineWidth(3f);
-        set1.setValueTextSize(10f);
+        set1.setLineWidth(2f);
+       // set1.setValueTextSize(6f);
         set1.setValueTextColor(Color.BLACK);
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
@@ -119,37 +133,14 @@ public class predictFragment extends Fragment {
                         /* String chValue = response.replace("\"","");
                         chValue = chValue.replace("\\","");
                         */
-                        ///////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////
                         try {
-                            // Response Parse //////////////////////////////////////////////////////////////////
+                            // Response Parse
                             predict = (new Gson()).fromJson(response, Predict.class);
                             if (predict == null) {
                                 return;
                             }
-                            //값 받아오기
-                            Double solar_radiation = predict.solar_radiation;
-                            tv_pr.setText(solar_radiation+"d");
-                            Log.v("hhd", "찍힘? => " + solar_radiation);
 
-                            Double solar_sunshine = predict.solar_sunshine;
-                            tv_ac.setText(solar_sunshine+"d");
-                            Log.v("hhd", "찍힘? => " + solar_sunshine);
 
-                            Double solar_generation = predict.solar_generation;
-                            tv_ac.setText(solar_generation+"d");
-                            Log.v("hhd", "찍힘? => " + solar_generation);
-
-                         //   JSONArray jsonArray = new JSONArray(response);
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject predict = jsonArray.getJSONObject(i);
-//                                Log.v("hhd", "성공" + predict.getString("성공"));
-//                            }
-                            /*jsonObject = jsonArray.getJSONObject(0);
-                            Log.v("myValueTest",jsonArray.length()+"");
-                            Log.v("myValueTest",jsonObject.toString());
-*/
                         } catch (Exception e) {
                             Log.v("hhd", "실패");
                             e.printStackTrace();
