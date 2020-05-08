@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-
-
-
 public class firstFragment extends Fragment {
 
     Button btn_solgit;

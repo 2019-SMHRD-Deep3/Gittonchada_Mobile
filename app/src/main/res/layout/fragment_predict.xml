@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/linechart"
-        android:layout_width="348dp"
-        android:layout_height="323dp"
+        android:layout_width="329dp"
+        android:layout_height="288dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="169dp"
-        android:layout_marginEnd="29dp"/>
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tomorrow">
+
+
+    </com.github.mikephil.charting.charts.LineChart>
 
     <TextView
         android:id="@+id/tv_title"
@@ -25,13 +31,46 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="false"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginTop="68dp"
         android:text="태양광발전량"
         android:textAlignment="center"
-        android:textColor="#FF916E"
-        android:textSize="36sp" />
+        android:textColor="?attr/colorButtonNormal"
+        android:textColorHighlight="?attr/colorButtonNormal"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tomorrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="168dp"
+        android:text="Today"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textColorHighlight="@color/design_default_color_on_secondary"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn_tomorrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="25dp"
+        android:text="tomorrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linechart"/>
+
+    <ProgressBar
+        android:id="@+id/weatherProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

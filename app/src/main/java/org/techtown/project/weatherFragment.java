@@ -144,16 +144,16 @@ public class weatherFragment extends Fragment {
 
                 progressBar.setVisibility(View.GONE);
 
-                long curTime = System.currentTimeMillis();
-
-                TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
-
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//                long curTime = System.currentTimeMillis();
+//
+//                TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
+//
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                 TimeZone.getTimeZone("Asia/Seoul");
                 Locale.setDefault(Locale.KOREA);
-                String str = sdf.format(new Date(curTime));
+//                String str = sdf.format(new Date(curTime));
 
-                tv_view.setText(str);
+//                tv_view.setText(str);
 
 
                 // Response Parse //////////////////////////////////////////////////////////////////

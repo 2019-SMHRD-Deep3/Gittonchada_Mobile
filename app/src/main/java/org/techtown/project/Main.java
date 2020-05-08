@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.techtown.project.predict.predictFragment;
 import org.techtown.project.smp.smpFragment;
 
 public class Main extends AppCompatActivity {
