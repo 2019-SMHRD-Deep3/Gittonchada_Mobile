@@ -20,61 +20,49 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.techtown.project.Login;
-import org.techtown.project.Main;
 import org.techtown.project.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import lib.kingja.switchbutton.SwitchMultiButton;
-
-public class smp_main extends Fragment {
-    Button btn_daily;
-    private LineChart mChart;
-    ArrayList<Entry> smp_entrychart = new ArrayList<>();
-    //SMPList smpList = new SMPList();
-    ArrayList<Float> smplist = new ArrayList<>();
+public class smp_time extends Fragment {
     View view;
-    // Fragment
     private RequestQueue requestQueue;
-    private Object Parcelable;
-    private Object smp_time;
+    private LineChart mChart;
+    Button btn_time;
+    ArrayList<Float> smp_present_list = new ArrayList<>();
+    ArrayList<Float> smp_future1_list = new ArrayList<>();
+    ArrayList<Float> smp_future2_list = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.smpfragment, container, false);
+        view = inflater.inflate(R.layout.fragment_smp_time, container, false);
         if (this.getContext() != null) {
             requestQueue = Volley.newRequestQueue(this.getContext());
         }
-        mChart = view.findViewById(R.id.smp_chart);
+        mChart = view.findViewById(R.id.smp_time_chart);
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
+
         sendRequest();
 
-        btn_daily = view.findViewById(R.id.btn_daily);
-        btn_daily.setOnClickListener(new View.OnClickListener() {
+        btn_time = view.findViewById(R.id.btn_time);
+        btn_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                smp_time smp_time = new smp_time();
-                getParentFragmentManager().beginTransaction().replace(R.id.framelayout, smp_time).commit();
+                smp_main smp_main = new smp_main();
+                getParentFragmentManager().beginTransaction().replace(R.id.framelayout, smp_main).commit();
             }
         });
         return view;
     }
-
     private void sendRequest(){
 
         String url = "http://172.30.1.43:9001/re/";
@@ -87,61 +75,78 @@ public class smp_main extends Fragment {
                         Gson gson = new Gson();
                         smp[] smp = gson.fromJson(response, smp[].class);
                         List<smp> list = Arrays.asList((smp));
-                        smplist.add(list.get(0).getPast3());
-                        smplist.add(list.get(0).getPast3());
-                        smplist.add(list.get(0).getPast2());
-                        smplist.add(list.get(0).getPast1());
-                        smplist.add(list.get(0).getPresent());
-                        smplist.add(list.get(0).getFuture1());
-                        smplist.add(list.get(0).getFuture2());
 
-                        for(int i=0; i<smplist.size();i++) {
-                            //Log.v("hhd", smplist.get(i)+": smplist");
+                        Log.v("hhd", "현재 list size : "+list.size());
+                        for(int i=0; i<list.size()-3;i++) {
+                            smp_present_list.add(list.get(i).getPresent());
+                            Log.v("hhd", "현재 smp : "+smp_present_list.get(i));
+                        }
+                        for(int i=0; i<list.size()-3;i++) {
+                            smp_future1_list.add(list.get(i).getFuture1());
+                            Log.v("hhd", "future1 smp : "+smp_future1_list.get(i));
+                        }
+                        for(int i=0; i<list.size()-3;i++) {
+                            smp_future2_list.add(list.get(i).getFuture2());
+                            Log.v("hhd", "future2 smp : "+smp_future2_list.get(i));
+                        }
+                        Log.v("hhd", "현재 smp size : "+smp_present_list.size());
+
+                        ArrayList<Entry> present = new ArrayList<>();
+                        ArrayList<Entry> future1 = new ArrayList<>();
+                        ArrayList<Entry> future2 = new ArrayList<>();
+
+                        for(int i = 0; i<smp_present_list.size();i++) {
+                            present.add(new Entry(i, smp_present_list.get(i)));
+                            future1.add(new Entry(i, smp_future1_list.get(i)));
+                            future2.add(new Entry(i, smp_future2_list.get(i)));
                         }
 
-                        //Log.v("hhd","present : "+list.get(0).getPresent());
-                        ArrayList<Entry> Value = new ArrayList<>();
-
-                        Value.add(new Entry(0,smplist.get(0)));
-                        Value.add(new Entry(1,smplist.get(1)));
-                        Value.add(new Entry(2,smplist.get(2)));
-                        Value.add(new Entry(3,smplist.get(3)));
-                        Value.add(new Entry(4,smplist.get(4)));
-                        Value.add(new Entry(5,smplist.get(5)));
-                        Value.add(new Entry(6,smplist.get(6)));
-                        LineDataSet set1 = new LineDataSet(Value,"daily SMP");
+                        LineDataSet set1 = new LineDataSet(present,"present");
+                        LineDataSet set2 = new LineDataSet(future1,"future1");
+                        LineDataSet set3 = new LineDataSet(future2, "future2");
                         mChart.getXAxis().setDrawGridLines(false);
                         mChart.getAxisLeft().setDrawGridLines(false);
                         mChart.getAxisRight().setDrawGridLines(false);
                         set1.setDrawValues(true);
                         set1.setCircleRadius(1f);
                         set1.setFillAlpha(110);
-                        set1.setColor(Color.RED);
+                        set1.setColor(Color.DKGRAY);
                         set1.setLineWidth(3f);
-                        set1.setValueTextSize(10f);
-                        set1.setValueTextColor(Color.BLUE);
+                        set1.setValueTextSize(0);
+                        set1.setValueTextColor(Color.BLACK);
+                        set2.setDrawValues(true);
+                        set2.setCircleRadius(1f);
+                        set2.setFillAlpha(110);
+                        set2.setColor(Color.GRAY);
+                        set2.setLineWidth(3f);
+                        set2.setValueTextSize(0);
+                        set2.setValueTextColor(Color.BLACK);
+                        set3.setDrawValues(true);
+                        set3.setCircleRadius(1f);
+                        set3.setFillAlpha(110);
+                        set3.setColor(Color.GRAY);
+                        set3.setLineWidth(3f);
+                        set3.setValueTextSize(0);
+                        set3.setValueTextColor(Color.BLACK);
+
                         XAxis xAxis = mChart.getXAxis();
                         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-                        YAxis yAxisRight = mChart.getAxisRight();
-                        yAxisRight.setDrawLabels(false);
-                        yAxisRight.setDrawAxisLine(false);
-                        yAxisRight.setDrawGridLines(false);
 
                         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                         dataSets.add(set1);
+                        dataSets.add(set2);
+                        dataSets.add(set3);
                         LineData data = new LineData(dataSets);
                         mChart.setData(data);
                         mChart.notifyDataSetChanged();
                         mChart.invalidate();
-
-
                     }
                 },
                 new Response.ErrorListener(){ //에러발생시 호출될 리스너 객체
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.v("hhd","daily 에러 => "+ error.getNetworkTimeMs());
-                        Log.v("hhd","daily 에러 => "+ String.valueOf(error));
+                        Log.v("hhd","time 에러 => "+ error.getNetworkTimeMs());
+                        Log.v("hhd","time 에러 => "+ String.valueOf(error));
                     }
                 }
         );
@@ -158,13 +163,4 @@ public class smp_main extends Fragment {
         requestQueue.add(request);
 
     }
-
-    private void updateFrameLayout(Fragment fragment) {
-        getActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.graphFrameLayout, fragment).commit();
-    }
-
-
 }

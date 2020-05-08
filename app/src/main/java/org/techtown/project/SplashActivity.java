@@ -14,8 +14,8 @@ import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
     public class SplashActivity extends AppCompatActivity {
-        TextView tv_solgit, tv_gittong;
-        ImageView iv_logo;
+        TextView tv_gittong;
+        ImageView iv_logo, iv_solgit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +24,14 @@ import androidx.appcompat.app.AppCompatActivity;
         Animation bounce = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce_ani);
         Animation linear = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.linear_ani);
 
-        tv_solgit = findViewById(R.id.tv_solgit);
         tv_gittong = findViewById(R.id.tv_gittong);
         iv_logo = findViewById(R.id.iv_logo);
+        iv_solgit = findViewById(R.id.iv_solgit);
 
-        tv_solgit.startAnimation(bounce);
+        iv_logo.startAnimation(bounce);
+        iv_solgit.startAnimation(linear);
         tv_gittong.startAnimation(linear);
-        iv_logo.startAnimation(linear);
+
 
         Handler handler = new Handler();
         handler.postDelayed(new animation(),3000);

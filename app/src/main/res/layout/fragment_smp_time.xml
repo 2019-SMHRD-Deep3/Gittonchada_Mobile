@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/smp_chart"
+        android:id="@+id/smp_time_chart"
         android:layout_width="376dp"
         android:layout_height="314dp"
         android:layout_below="@+id/textView"
@@ -26,7 +26,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="52dp"
-        android:text="일자별 SMP 가격동향"
+        android:text="시간별 SMP 가격동향"
         android:textColor="#79685D59"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,34 +34,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_daily"
-        android:layout_width="65dp"
-        android:layout_height="35dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="70dp"
-        android:layout_toStartOf="@+id/btn_daily1"
-        android:background="@drawable/button_left"
-        android:backgroundTint="#ffffff"
-        android:text="시간별"
-        android:textColor="#FF8768"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_daily1"
-        app:layout_constraintTop_toBottomOf="@+id/smp_chart"
-        app:layout_constraintVertical_bias="0.0"/>
-
-
-    <Button
-        android:id="@+id/btn_daily1"
+        android:id="@+id/btn_time"
         android:layout_width="65dp"
         android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="40dp"
         android:background="@drawable/button_right_whtie"
+        android:backgroundTint="#ffffff"
         android:text="일자별"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_daily"
+        android:textColor="#FF8768"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_time1"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/btn_time1"
+        android:layout_width="65dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="76dp"
+        android:layout_toStartOf="@+id/btn_time"
+        android:background="@drawable/button_left"
+        android:text="시간별"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_time"
+        app:layout_constraintTop_toBottomOf="@+id/smp_time_chart"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,4 @@
+/*
 package org.techtown.project.smp;
 
 import android.os.Bundle;
@@ -133,4 +134,28 @@ public class smpFragment extends Fragment {
     private  void setChart(){
 
     }
+    //                        try {
+//                            JSONArray jsonArray = new JSONArray(response);
+//                            //JSONObject jsonObject = jsonArray.getJSONObject(i);
+//
+//                            //Log.v("hhd",jsonArray.getJSONObject(0).get("future1"));
+//
+//                            for(int i = 0; i<jsonArray.length();i++){
+//                                JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+//                                Log.v("hhd","future2 : "+jsonObject.getString("future1"));
+//                               // Log.v("hhd","future1 : "+jsonObject.getString("future1"));
+//                                //future2.add(smp.getString("future2"));
+//                                //Log.v("hhd","arraylist(2) : " + future2.get(2));
+//                            }
+//
+//                            /*jsonObject = jsonArray.getJSONObject(0);
+//                            Log.v("myValueTest",jsonArray.length()+"");
+//                            Log.v("myValueTest",jsonObject.toString());
+//
+//                        }catch (Exception e){
+//                            Log.v("hhd","실패");
+//                            e.printStackTrace();
+//                        }
+
 }
+*/
