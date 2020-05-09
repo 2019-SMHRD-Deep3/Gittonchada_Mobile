@@ -13,9 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashActivity extends AppCompatActivity {
-    TextView tv_gittong;
-    ImageView iv_logo, iv_solgit;
+    public class SplashActivity extends AppCompatActivity {
+        TextView tv_gittong;
+        ImageView iv_logo, iv_solgit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +40,9 @@ public class SplashActivity extends AppCompatActivity {
     public class animation implements Runnable{
         public void run(){
 
-            startActivity(new Intent(getApplication(), Login.class));
-            SplashActivity.this.finish();
-        }
+                startActivity(new Intent(getApplication(), Login.class));
+                SplashActivity.this.finish();
+            }
 
-    }
+        }
 }

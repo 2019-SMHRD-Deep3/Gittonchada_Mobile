@@ -1,7 +1,5 @@
 package org.techtown.project.model;
 
-import org.techtown.project.Current;
-
 import java.util.ArrayList;
 
 public class Weather {

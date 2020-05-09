@@ -1,5 +1,7 @@
 package org.techtown.project.smp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,19 +23,35 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.CandleEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.MPPointF;
+import com.github.mikephil.charting.utils.Utils;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.techtown.project.Login;
+import org.techtown.project.Main;
 import org.techtown.project.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
+import lib.kingja.switchbutton.SwitchMultiButton;
 
 public class smp_main extends Fragment {
     Button btn_daily;
@@ -43,8 +63,6 @@ public class smp_main extends Fragment {
     View view;
     // Fragment
     private RequestQueue requestQueue;
-    private Object Parcelable;
-    private Object smp_time;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -83,15 +101,14 @@ public class smp_main extends Fragment {
                         Gson gson = new Gson();
                         smp[] smp = gson.fromJson(response, smp[].class);
                         List<smp> list = Arrays.asList((smp));
-                        smplist.add(list.get(0).getPast2());
-                        smplist.add(list.get(0).getPast1());
-                        smplist.add(list.get(0).getPresent());
-                        smplist.add(list.get(0).getFuture1());
-                        smplist.add(list.get(0).getFuture2());
+                        smplist.add(list.get(26).getPast2());
+                        smplist.add(list.get(26).getPast1());
+                        smplist.add(list.get(26).getPresent());
+                        smplist.add(list.get(26).getFuture1());
+                        smplist.add(list.get(26).getFuture2());
 
-                        for(int i=0; i<smplist.size();i++) {
-                            //Log.v("hhd", smplist.get(i)+": smplist");
-                        }
+                        Log.v("hhd", list.size()+": list");
+
                         ArrayList<Entry> Value = new ArrayList<>();
 
                         Value.add(new Entry(0,smplist.get(0)));
@@ -103,19 +120,29 @@ public class smp_main extends Fragment {
                         mChart.getXAxis().setDrawGridLines(false);
                         mChart.getAxisLeft().setDrawGridLines(false);
                         mChart.getAxisRight().setDrawGridLines(false);
-                        set1.setDrawValues(true);
+                        set1.setDrawValues(false);
                         set1.setCircleRadius(1f);
                         set1.setFillAlpha(110);
-                        set1.setColor(Color.RED);
+                        set1.setColor(Color.rgb(255,131,85));
                         set1.setLineWidth(3f);
                         set1.setValueTextSize(10f);
-                        set1.setValueTextColor(Color.BLUE);
+                        set1.setValueTextColor(Color.GRAY);
                         XAxis xAxis = mChart.getXAxis();
                         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                        String[] labels={"이틀전", "하루전", "오늘", "내일", "모레"};
+                        xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
+                        xAxis.setLabelCount(5, true);
                         YAxis yAxisRight = mChart.getAxisRight();
                         yAxisRight.setDrawLabels(false);
                         yAxisRight.setDrawAxisLine(false);
                         yAxisRight.setDrawGridLines(false);
+                        Description description = new Description();
+                        description.setText("");
+
+                        MyMarkerView marker = new MyMarkerView(getActivity(), R.layout.smpfragment);
+                        Log.v("hhd",getContext()+"get");
+                        marker.setChartView(mChart);
+                        mChart.setMarker(marker);
 
                         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                         dataSets.add(set1);
@@ -153,6 +180,37 @@ public class smp_main extends Fragment {
                 .getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.graphFrameLayout, fragment).commit();
+    }
+    public class MyMarkerView extends MarkerView {
+
+        TextView tvContent;
+
+        public MyMarkerView(Context context, int layoutResource) {
+            super(context, layoutResource);
+
+            tvContent = findViewById(R.id.tvdailymark);
+        }
+
+        @Override
+        public void refreshContent(Entry e, Highlight highlight) {
+
+            if (e instanceof CandleEntry) {
+
+                CandleEntry ce = (CandleEntry) e;
+
+                tvContent.setText("" + Utils.formatNumber(ce.getHigh(), 0, true));
+            } else {
+
+                tvContent.setText("" + Utils.formatNumber(e.getY(), 0, true));
+            }
+
+            super.refreshContent(e, highlight);
+        }
+
+        @Override
+        public MPPointF getOffset() {
+            return new MPPointF(-(getWidth() / 2), -getHeight());
+        }
     }
 
 
