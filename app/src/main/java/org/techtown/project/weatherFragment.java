@@ -188,6 +188,12 @@ public class weatherFragment extends Fragment {
                     img_icon.setImageResource(R.drawable.cloud1);
                 }else if(houlytemp.equals("broken clouds")){
                     img_icon.setImageResource(R.drawable.cloud1);
+                }else if(houlytemp.equals("mist")){
+                    img_icon.setImageResource(R.drawable.rainy1);
+                }else if(houlytemp.equals("light rain")){
+                    img_icon.setImageResource(R.drawable.rainy1);
+                }else if(houlytemp.equals("fog")){
+                    img_icon.setImageResource(R.drawable.rainy1);
                 }
                 //img2
 //                Log.v("hhd","weather : "+(weather==null));

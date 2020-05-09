@@ -9,17 +9,17 @@
     <item
         android:id="@+id/item1"
         android:icon="@drawable/ic_cloudy"
-        android:title="@string/title_home" />
+        android:title="날씨" />
 
     <item
         android:id="@+id/item2"
         android:icon="@drawable/ic_predict3"
-        android:title="Predict" />
+        android:title="발전량" />
 
     <item
         android:id="@+id/item3"
         android:icon="@drawable/ic_rec1"
-        android:title="@string/title_activity_main" />
+        android:title="SMP" />
     <item
         android:id="@+id/item4"
         android:icon="@drawable/comm1"
