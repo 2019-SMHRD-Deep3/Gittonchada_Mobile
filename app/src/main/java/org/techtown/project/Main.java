@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.techtown.project.predict.predictFragment;
-import org.techtown.project.smp.smpFragment;
 import org.techtown.project.smp.smp_main;
 
 public class Main extends AppCompatActivity {
