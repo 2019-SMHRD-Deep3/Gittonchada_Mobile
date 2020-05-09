@@ -3,7 +3,6 @@ package org.techtown.project;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,7 +114,7 @@ public class weatherFragment extends Fragment {
             }
         });
 
-        progressBar = superView.findViewById(R.id.weatherProgressBar);
+        progressBar = superView.findViewById(R.id.predictProgressBar);
     }
 
     private void requestWeather() {

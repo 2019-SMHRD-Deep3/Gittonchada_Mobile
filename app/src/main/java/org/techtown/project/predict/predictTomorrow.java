@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -45,7 +46,7 @@ public class predictTomorrow extends Fragment {
         RequestQueue requestQueue;
         Predict predict = null;
         ProgressBar progressBar2;
-        Button btn_today;
+        Button btn_today1, btn_tomorrow1;
         View v;
 
         public View onCreateView(@NonNull LayoutInflater inflater,
@@ -61,10 +62,19 @@ public class predictTomorrow extends Fragment {
             mChart.setDragEnabled(true);
             mChart.setScaleEnabled(false);
             sendRequest();
-            progressBar2 = v.findViewById(R.id.weatherProgressBar2);
-            btn_today = v.findViewById(R.id.btn_today);
+            progressBar2 = v.findViewById(R.id.predictProgressBar2);
+            progressBar2.setVisibility(View.VISIBLE);
+            btn_today1 = v.findViewById(R.id.btn_today1);
+            btn_tomorrow1 = v.findViewById(R.id.btn_tomorrow1);
 
-            btn_today.setOnClickListener(new View.OnClickListener() {
+            btn_today1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    org.techtown.project.predict.predictFragment predictFragment= new org.techtown.project.predict.predictFragment();
+                    getParentFragmentManager().beginTransaction().replace(R.id.framelayout , predictFragment).commit();
+                }
+            });
+            btn_tomorrow1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     org.techtown.project.predict.predictFragment predictFragment= new org.techtown.project.predict.predictFragment();
@@ -94,29 +104,7 @@ public class predictTomorrow extends Fragment {
                                 return;
                             }
                             ArrayList<Entry> yValue = new ArrayList<>();
-//                            yValue.add(new Entry(1,predict.solar_generation0));
-//                            yValue.add(new Entry(2,predict.solar_generation1));
-//                            yValue.add(new Entry(3, predict.solar_generation2));
-//                            yValue.add(new Entry(4, predict.solar_generation4));
-//                            yValue.add(new Entry(5, predict.solar_generation5));
-//                            yValue.add(new Entry(6, predict.solar_generation6));
-//                            yValue.add(new Entry(7, predict.solar_generation7));
-//                            yValue.add(new Entry(8, predict.solar_generation8));
-//                            yValue.add(new Entry(9, predict.solar_generation9));
-//                            yValue.add(new Entry(10, predict.solar_generation10));
-//                            yValue.add(new Entry(11, predict.solar_generation11));
-//                            yValue.add(new Entry(12, predict.solar_generation12));
-//                            yValue.add(new Entry(13, predict.solar_generation13));
-//                            yValue.add(new Entry(14, predict.solar_generation14));
-//                            yValue.add(new Entry(15, predict.solar_generation15));
-//                            yValue.add(new Entry(16, predict.solar_generation16));
-//                            yValue.add(new Entry(17, predict.solar_generation17));
-//                            yValue.add(new Entry(18, predict.solar_generation18));
-//                            yValue.add(new Entry(19, predict.solar_generation19));
-//                            yValue.add(new Entry(20, predict.solar_generation20));
-//                            yValue.add(new Entry(21, predict.solar_generation21));
-//                            yValue.add(new Entry(22, predict.solar_generation22));
-//                            yValue.add(new Entry(23, predict.solar_generation23));
+
                         yValue.add(new Entry(24, predict.solar_generation24));
                         yValue.add(new Entry(25, predict.solar_generation25));
                         yValue.add(new Entry(26, predict.solar_generation26));
@@ -143,12 +131,18 @@ public class predictTomorrow extends Fragment {
                         yValue.add(new Entry(47, predict.solar_generation47));
 
                             LineDataSet set1 = new LineDataSet(yValue,"실시간 발전량");
+                            YAxis yAxisRight = mChart.getAxisRight();
+                            yAxisRight.setDrawLabels(false);
+                            yAxisRight.setDrawAxisLine(false);
+                            yAxisRight.setDrawGridLines(false);
 
+                            set1.setCircleColor(Color.rgb(213, 213, 213));
+                            set1.setCircleRadius(3f);
                             set1.setFillAlpha(110);
-                            set1.setColor(Color.DKGRAY);
+                            set1.setColor(Color.rgb(255, 167, 167));
                             set1.setLineWidth(3f);
-                            set1.setValueTextSize(8f);
-                            set1.setValueTextColor(Color.RED);
+                            set1.setValueTextSize(10f);
+                            set1.setValueTextColor(Color.rgb(0, 0, 84));
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
                             LineData data = new LineData(dataSets);
@@ -156,12 +150,13 @@ public class predictTomorrow extends Fragment {
                             mChart.notifyDataSetChanged();
                             mChart.invalidate();
 
-                            XAxis xAxis = mChart.getXAxis();
-                            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+                            XAxis xAxis2 = mChart.getXAxis();
+                            xAxis2.setPosition(XAxis.XAxisPosition.BOTTOM);
                             mChart.getXAxis().setDrawGridLines(false);
                             mChart.getAxisLeft().setDrawGridLines(false);
                             mChart.getAxisRight().setDrawGridLines(false);
-
+                            progressBar2.setVisibility(View.GONE);
                         }
                     },
                     new Response.ErrorListener() { //에러발생시 호출될 리스너 객체

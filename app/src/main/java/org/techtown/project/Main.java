@@ -11,10 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.techtown.project.predict.predictFragment;
 import org.techtown.project.smp.smpFragment;
+import org.techtown.project.smp.smp_main;
 
 public class Main extends AppCompatActivity {
     // 주석
-    smpFragment frag_dash;
+    smp_main frag_dash;
     weatherFragment frag_home;
     communicationFragment frag_noti;
     predictFragment frag_black;
@@ -26,7 +27,7 @@ public class Main extends AppCompatActivity {
 
 
         frag_black = new predictFragment();
-        frag_dash = new smpFragment();
+        frag_dash = new smp_main();
         frag_home = new weatherFragment();
         frag_noti = new communicationFragment();
         frag_first = new firstFragment();

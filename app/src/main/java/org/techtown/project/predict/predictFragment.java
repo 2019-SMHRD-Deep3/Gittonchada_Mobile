@@ -22,10 +22,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.google.gson.Gson;
 
 import org.techtown.project.R;
@@ -46,7 +48,9 @@ public class predictFragment extends Fragment {
     private RequestQueue requestQueue;
     private Predict predict = null;
     private ProgressBar progressBar;
-    private Button btn_tomorrow;
+    private Button btn_tomorrow, btn_today;
+    private TextView tv_predict;
+    private TextView tv_time;
     View v;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -60,16 +64,32 @@ public class predictFragment extends Fragment {
         mChart = v.findViewById(R.id.linechart);
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
+
+        tv_predict = v.findViewById(R.id.tv_predict);
+        tv_time = v.findViewById(R.id.tv_view);
+
         sendRequest();
-        progressBar = v.findViewById(R.id.weatherProgressBar);
+
+        progressBar = v.findViewById(R.id.predictProgressBar);
         progressBar.setVisibility(View.VISIBLE);
         btn_tomorrow = v.findViewById(R.id.btn_tomorrow);
+        btn_today = v.findViewById(R.id.btn_today);
+
+
 
         btn_tomorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             predictTomorrow predictTomorrow = new predictTomorrow();
             getParentFragmentManager().beginTransaction().replace(R.id.framelayout , predictTomorrow).commit();
+
+            }
+        });
+        btn_today.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                predictTomorrow predictTomorrow = new predictTomorrow();
+                getParentFragmentManager().beginTransaction().replace(R.id.framelayout , predictTomorrow).commit();
             }
         });
 
@@ -120,38 +140,20 @@ public class predictFragment extends Fragment {
                         yValue.add(new Entry(22, predict.solar_generation21));
                         yValue.add(new Entry(23, predict.solar_generation22));
                         yValue.add(new Entry(24, predict.solar_generation23));
-//                        yValue.add(new Entry(24, predict.solar_generation24));
-//                        yValue.add(new Entry(25, predict.solar_generation25));
-//                        yValue.add(new Entry(26, predict.solar_generation26));
-//                        yValue.add(new Entry(27, predict.solar_generation27));
-//                        yValue.add(new Entry(28, predict.solar_generation28));
-//                        yValue.add(new Entry(29, predict.solar_generation29));
-//                        yValue.add(new Entry(30, predict.solar_generation30));
-//                        yValue.add(new Entry(31, predict.solar_generation31));
-//                        yValue.add(new Entry(32, predict.solar_generation32));
-//                        yValue.add(new Entry(33, predict.solar_generation33));
-//                        yValue.add(new Entry(34, predict.solar_generation34));
-//                        yValue.add(new Entry(35, predict.solar_generation35));
-//                        yValue.add(new Entry(36, predict.solar_generation36));
-//                        yValue.add(new Entry(37, predict.solar_generation37));
-//                        yValue.add(new Entry(38, predict.solar_generation38));
-//                        yValue.add(new Entry(39, predict.solar_generation39));
-//                        yValue.add(new Entry(40, predict.solar_generation40));
-//                        yValue.add(new Entry(41, predict.solar_generation41));
-//                        yValue.add(new Entry(42, predict.solar_generation42));
-//                        yValue.add(new Entry(43, predict.solar_generation43));
-//                        yValue.add(new Entry(44, predict.solar_generation44));
-//                        yValue.add(new Entry(45, predict.solar_generation45));
-//                        yValue.add(new Entry(46, predict.solar_generation46));
-//                        yValue.add(new Entry(47, predict.solar_generation47));
 
                         LineDataSet set1 = new LineDataSet(yValue,"실시간 발전량");
+                        YAxis yAxisRight = mChart.getAxisRight();
+                        yAxisRight.setDrawLabels(false);
+                        yAxisRight.setDrawAxisLine(false);
+                        yAxisRight.setDrawGridLines(false);
 
+                        set1.setCircleColor(Color.rgb(213, 213, 213));
+                        set1.setCircleRadius(3f);
                         set1.setFillAlpha(110);
-                        set1.setColor(Color.DKGRAY);
+                        set1.setColor(Color.rgb(255, 167, 167));
                         set1.setLineWidth(3f);
-                        set1.setValueTextSize(8f);
-                        set1.setValueTextColor(Color.RED);
+                        set1.setValueTextSize(10f);
+                        set1.setValueTextColor(Color.rgb(0, 0, 84));
                         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                         dataSets.add(set1);
                         LineData data = new LineData(dataSets);
@@ -165,6 +167,9 @@ public class predictFragment extends Fragment {
                         mChart.getAxisLeft().setDrawGridLines(false);
                         mChart.getAxisRight().setDrawGridLines(false);
                         progressBar.setVisibility(View.GONE);
+
+
+
                         }
                 },
                 new Response.ErrorListener() { //에러발생시 호출될 리스너 객체
@@ -175,15 +180,6 @@ public class predictFragment extends Fragment {
                     }
                 }
         );
-
-
-//        private void requestPredict() {
-//
-//            if (requestQueue == null) { return; }
-//            if (progressBar.getVisibility() == View.VISIBLE) { return; }
-//            else {
-//                progressBar.setVisibility(View.VISIBLE);
-//            }
 
 
         request.setShouldCache(false);
