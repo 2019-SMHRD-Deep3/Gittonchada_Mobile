@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -36,6 +37,7 @@ public class smp_time extends Fragment {
     View view;
     private RequestQueue requestQueue;
     private LineChart mChart;
+    private ProgressBar progressBar;
     Button btn_time;
     ArrayList<Float> smp_present_list = new ArrayList<>();
     ArrayList<Float> smp_future1_list = new ArrayList<>();
@@ -52,6 +54,8 @@ public class smp_time extends Fragment {
         mChart.setScaleEnabled(false);
 
         sendRequest();
+        progressBar = view.findViewById(R.id.timeProgressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         btn_time = view.findViewById(R.id.btn_time);
         btn_time.setOnClickListener(new View.OnClickListener() {
@@ -107,27 +111,29 @@ public class smp_time extends Fragment {
                         mChart.getXAxis().setDrawGridLines(false);
                         mChart.getAxisLeft().setDrawGridLines(false);
                         mChart.getAxisRight().setDrawGridLines(false);
-                        set1.setDrawValues(true);
+                        set1.setDrawValues(false);
                         set1.setCircleRadius(1f);
                         set1.setFillAlpha(110);
                         set1.setColor(Color.DKGRAY);
                         set1.setLineWidth(3f);
-                        set1.setValueTextSize(0);
+                        set1.setValueTextSize(10f);
                         set1.setValueTextColor(Color.BLACK);
-                        set2.setDrawValues(true);
+                        set2.setDrawValues(false);
                         set2.setCircleRadius(1f);
                         set2.setFillAlpha(110);
                         set2.setColor(Color.GRAY);
                         set2.setLineWidth(3f);
-                        set2.setValueTextSize(0);
+                        set2.setValueTextSize(10f);
                         set2.setValueTextColor(Color.BLACK);
-                        set3.setDrawValues(true);
+                        set3.setDrawValues(false);
                         set3.setCircleRadius(1f);
                         set3.setFillAlpha(110);
                         set3.setColor(Color.GRAY);
                         set3.setLineWidth(3f);
-                        set3.setValueTextSize(0);
+                        set3.setValueTextSize(10f);
                         set3.setValueTextColor(Color.BLACK);
+                        mChart.setDoubleTapToZoomEnabled(false);
+                        //mChart.setBackgroundDrawable();
 
                         XAxis xAxis = mChart.getXAxis();
                         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -140,6 +146,7 @@ public class smp_time extends Fragment {
                         mChart.setData(data);
                         mChart.notifyDataSetChanged();
                         mChart.invalidate();
+                        progressBar.setVisibility(View.GONE);
                     }
                 },
                 new Response.ErrorListener(){ //에러발생시 호출될 리스너 객체
@@ -163,4 +170,5 @@ public class smp_time extends Fragment {
         requestQueue.add(request);
 
     }
+
 }

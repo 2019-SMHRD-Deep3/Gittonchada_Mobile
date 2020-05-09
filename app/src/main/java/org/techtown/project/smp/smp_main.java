@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -43,6 +44,7 @@ import lib.kingja.switchbutton.SwitchMultiButton;
 
 public class smp_main extends Fragment {
     Button btn_daily;
+    private ProgressBar progressBar;
     private LineChart mChart;
     ArrayList<Entry> smp_entrychart = new ArrayList<>();
     //SMPList smpList = new SMPList();
@@ -63,6 +65,9 @@ public class smp_main extends Fragment {
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
         sendRequest();
+
+        progressBar = view.findViewById(R.id.dailyProgressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         btn_daily = view.findViewById(R.id.btn_daily);
         btn_daily.setOnClickListener(new View.OnClickListener() {
@@ -87,8 +92,6 @@ public class smp_main extends Fragment {
                         Gson gson = new Gson();
                         smp[] smp = gson.fromJson(response, smp[].class);
                         List<smp> list = Arrays.asList((smp));
-                        smplist.add(list.get(0).getPast3());
-                        smplist.add(list.get(0).getPast3());
                         smplist.add(list.get(0).getPast2());
                         smplist.add(list.get(0).getPast1());
                         smplist.add(list.get(0).getPresent());
@@ -98,8 +101,6 @@ public class smp_main extends Fragment {
                         for(int i=0; i<smplist.size();i++) {
                             //Log.v("hhd", smplist.get(i)+": smplist");
                         }
-
-                        //Log.v("hhd","present : "+list.get(0).getPresent());
                         ArrayList<Entry> Value = new ArrayList<>();
 
                         Value.add(new Entry(0,smplist.get(0)));
@@ -107,8 +108,6 @@ public class smp_main extends Fragment {
                         Value.add(new Entry(2,smplist.get(2)));
                         Value.add(new Entry(3,smplist.get(3)));
                         Value.add(new Entry(4,smplist.get(4)));
-                        Value.add(new Entry(5,smplist.get(5)));
-                        Value.add(new Entry(6,smplist.get(6)));
                         LineDataSet set1 = new LineDataSet(Value,"daily SMP");
                         mChart.getXAxis().setDrawGridLines(false);
                         mChart.getAxisLeft().setDrawGridLines(false);
@@ -133,8 +132,7 @@ public class smp_main extends Fragment {
                         mChart.setData(data);
                         mChart.notifyDataSetChanged();
                         mChart.invalidate();
-
-
+                        progressBar.setVisibility(View.GONE);
                     }
                 },
                 new Response.ErrorListener(){ //에러발생시 호출될 리스너 객체
