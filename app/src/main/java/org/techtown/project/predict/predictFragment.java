@@ -49,8 +49,8 @@ public class predictFragment extends Fragment {
     private Predict predict = null;
     private ProgressBar progressBar;
     private Button btn_tomorrow, btn_today;
-    private TextView tv_predict;
-    private TextView tv_time;
+    private TextView tv_predict1;
+    private TextView tv_time1;
     View v;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -65,10 +65,10 @@ public class predictFragment extends Fragment {
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
 
-        tv_predict = v.findViewById(R.id.tv_predict1);
-        tv_time = v.findViewById(R.id.tv_time1);
-        tv_predict.setVisibility(View.INVISIBLE);
-        tv_time.setVisibility(View.INVISIBLE);
+        tv_predict1 = v.findViewById(R.id.tv_predict1);
+        tv_time1 = v.findViewById(R.id.tv_time1);
+        tv_predict1.setVisibility(View.INVISIBLE);
+        tv_time1.setVisibility(View.INVISIBLE);
 
         sendRequest();
 
@@ -100,7 +100,7 @@ public class predictFragment extends Fragment {
 
     public void sendRequest() {
 
-        String url = "http://172.30.1.23:9002/re/get_generation";
+        String url = "http://172.30.1.43:9002/re/get_generation";
         StringRequest request = new StringRequest(
 
                 Request.Method.POST,
@@ -169,8 +169,8 @@ public class predictFragment extends Fragment {
                         mChart.getAxisLeft().setDrawGridLines(false);
                         mChart.getAxisRight().setDrawGridLines(false);
                         progressBar.setVisibility(View.GONE);
-                        tv_predict.setVisibility(View.VISIBLE);
-                        tv_time.setVisibility(View.VISIBLE);
+                        tv_predict1.setVisibility(View.VISIBLE);
+                        tv_time1.setVisibility(View.VISIBLE);
                     }
                 },
                 new Response.ErrorListener() { //에러발생시 호출될 리스너 객체
