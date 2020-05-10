@@ -6,6 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tvdailymark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#00aaff"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/smp_chart"
         android:layout_width="349dp"
@@ -14,8 +29,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_daily1" />
 
@@ -39,13 +54,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/btn_daily"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="275dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:layout_toStartOf="@+id/btn_daily1"
         android:background="@drawable/button_left_white"
         android:text="시간별"
@@ -53,7 +69,6 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_daily1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_daily" />
-
 
     <Button
         android:id="@+id/btn_daily1"
@@ -77,19 +92,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvdailymark"
+        android:id="@+id/tv_max"
+        android:layout_width="46dp"
+        android:layout_height="19dp"
+        android:layout_marginBottom="96dp"
+        android:text="최댓값 : "
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="32dp" />
+
+    <TextView
+        android:id="@+id/tv_maxvalue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:text=""
-        android:textSize="12dp"
-        android:textColor="#00aaff"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_marginStart="40dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_max"
+        tools:layout_editor_absoluteY="518dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

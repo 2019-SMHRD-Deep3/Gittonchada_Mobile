@@ -42,7 +42,7 @@ public class Main extends AppCompatActivity {
 
                     case R.id.item1:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, frag_home).commit();
-                        Toast.makeText(getApplicationContext(), "home", Toast.LENGTH_LONG).show();
+
                         return true;
                     case R.id.item2:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, frag_black).commit();
@@ -59,7 +59,7 @@ public class Main extends AppCompatActivity {
 
                     case R.id.item5:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, frag_first).commit();
-
+                        Toast.makeText(getApplicationContext(), "home", Toast.LENGTH_LONG).show();
                         return true;
                 }
                 return false;

@@ -1,5 +1,6 @@
 package org.techtown.project.smp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,12 +24,15 @@ import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.MPPointF;
 import com.google.gson.Gson;
 
 import org.techtown.project.R;
@@ -143,8 +148,14 @@ public class smp_time extends Fragment {
                         yAxisRight.setDrawAxisLine(false);
                         yAxisRight.setDrawGridLines(false);
                         mChart.setDescription(null);
-                        //Legend legend = mChart.getLegend();
-                        //legend.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);//하단 왼쪽에 설정
+
+                        MyMarkerView marker = new MyMarkerView(getContext(), R.layout.maker_item);
+
+
+                        Log.v("hhd",getContext()+"get");
+                        marker.setChartView(mChart);
+                        mChart.setMarker(marker);
+
 
                         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                         dataSets.add(set1);
@@ -177,6 +188,28 @@ public class smp_time extends Fragment {
 
         requestQueue.add(request);
 
+    }
+    public class MyMarkerView extends MarkerView {
+        TextView tvContent;
+
+        public MyMarkerView(Context context, int layoutResource) {
+            super(context, layoutResource);
+
+            tvContent = this.findViewById(R.id.markerItem);
+        }
+
+        @Override
+        public void refreshContent(Entry e, Highlight highlight) {
+
+            tvContent.setText(String.format("%.2f",e.getY()));
+
+            super.refreshContent(e, highlight);
+        }
+
+        @Override
+        public MPPointF getOffset() {
+            return new MPPointF(-(getWidth() / 2), -getHeight());
+        }
     }
 
 }

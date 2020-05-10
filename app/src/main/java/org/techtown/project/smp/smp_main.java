@@ -1,20 +1,21 @@
 package org.techtown.project.smp;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.MarkerView;
@@ -31,7 +33,6 @@ import com.github.mikephil.charting.data.CandleEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
@@ -39,19 +40,11 @@ import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.techtown.project.Login;
-import org.techtown.project.Main;
 import org.techtown.project.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-
-import lib.kingja.switchbutton.SwitchMultiButton;
 
 public class smp_main extends Fragment {
     Button btn_daily;
@@ -61,15 +54,19 @@ public class smp_main extends Fragment {
     //SMPList smpList = new SMPList();
     ArrayList<Float> smplist = new ArrayList<>();
     View view;
+    Context ct;
+    TextView tv_max;
     // Fragment
     private RequestQueue requestQueue;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
        view = inflater.inflate(R.layout.smpfragment, container, false);
+        ct = getActivity().getApplicationContext();
         if (this.getContext() != null) {
             requestQueue = Volley.newRequestQueue(this.getContext());
         }
+
         mChart = view.findViewById(R.id.smp_chart);
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
@@ -86,6 +83,7 @@ public class smp_main extends Fragment {
                 getParentFragmentManager().beginTransaction().replace(R.id.framelayout, smp_time).commit();
             }
         });
+
         return view;
     }
 
@@ -139,8 +137,8 @@ public class smp_main extends Fragment {
                         Description description = new Description();
                         description.setText("");
 
-                        MyMarkerView marker = new MyMarkerView(getActivity(), R.layout.smpfragment);
-                        Log.v("hhd",getContext()+"get");
+                        MyMarkerView marker = new MyMarkerView(getContext(), R.layout.maker_item);
+
                         marker.setChartView(mChart);
                         mChart.setMarker(marker);
 
@@ -150,6 +148,11 @@ public class smp_main extends Fragment {
                         mChart.setData(data);
                         mChart.notifyDataSetChanged();
                         mChart.invalidate();
+
+                        tv_max = view.findViewById(R.id.tv_maxvalue);
+                        tv_max.setText(list.get(26).getPresent()+"");
+
+
                         progressBar.setVisibility(View.GONE);
                     }
                 },
@@ -181,28 +184,21 @@ public class smp_main extends Fragment {
                 .beginTransaction()
                 .replace(R.id.graphFrameLayout, fragment).commit();
     }
-    public class MyMarkerView extends MarkerView {
 
+    public class MyMarkerView extends MarkerView {
         TextView tvContent;
 
         public MyMarkerView(Context context, int layoutResource) {
             super(context, layoutResource);
 
-            tvContent = findViewById(R.id.tvdailymark);
+            tvContent = this.findViewById(R.id.markerItem);
         }
+
 
         @Override
         public void refreshContent(Entry e, Highlight highlight) {
 
-            if (e instanceof CandleEntry) {
-
-                CandleEntry ce = (CandleEntry) e;
-
-                tvContent.setText("" + Utils.formatNumber(ce.getHigh(), 0, true));
-            } else {
-
-                tvContent.setText("" + Utils.formatNumber(e.getY(), 0, true));
-            }
+            tvContent.setText(String.format("%.2f",e.getY()));
 
             super.refreshContent(e, highlight);
         }
