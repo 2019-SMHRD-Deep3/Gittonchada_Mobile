@@ -38,12 +38,10 @@ public class communicationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        smp_sendRequest();
-        generation_sendRequest();
 
         return inflater.inflate(R.layout.fragment_communication, container, false);
     }
-    private void smp_sendRequest(){
+/*    private void smp_sendRequest(){
         String url = "http://172.30.1.43:9001/re/";
         StringRequest request = new StringRequest(
                 Request.Method.GET,
@@ -76,9 +74,9 @@ public class communicationFragment extends Fragment {
 
                 com.android.volley.DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        requestQueue.add(request);
-    }
-    private void generation_sendRequest() {
+        //requestQueue.add(request);
+    }*/
+    /*private void generation_sendRequest() {
         String url = "http://172.30.1.23:9000/re/5/6/1/14.07/0/0.93/4/81/5";
         StringRequest request = new StringRequest(
                 Request.Method.GET,
@@ -112,5 +110,5 @@ public class communicationFragment extends Fragment {
                 }
         );
         requestQueue.add(request);
-    }
+    }*/
 }

@@ -188,7 +188,7 @@ public class weatherFragment extends Fragment {
                 }else if(houlytemp.equals("broken clouds")){
                     img_icon.setImageResource(R.drawable.cloud1);
                 }else if(houlytemp.equals("mist")){
-                    img_icon.setImageResource(R.drawable.rainy1);
+                    img_icon.setImageResource(R.drawable.cloud1);
                 }else if(houlytemp.equals("light rain")){
                     img_icon.setImageResource(R.drawable.rainy1);
                 }else if(houlytemp.equals("fog")){
@@ -201,154 +201,164 @@ public class weatherFragment extends Fragment {
 
                 String tempClouds3 = weather.hourly.get(3).weather.get(0).icon;
 
-                    if(tempClouds3.equals("01d")){
-                        img1.setImageResource(R.drawable.sunny);
-                    }else if(tempClouds3.equals("02d")){
-                        img1.setImageResource(R.drawable.sunny);
-                    }else if(tempClouds3.equals("03d")){
-                        img1.setImageResource(R.drawable.clouds2);
-                    }else if(tempClouds3.equals("04d")){
-                        img1.setImageResource(R.drawable.clouds2);
-                    }else if(tempClouds3.equals("09d")){
-                        img1.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds3.equals("10d")){
-                        img1.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds3.equals("11d")){
-                        img1.setImageResource(R.drawable.thunder);
-                    }else if(tempClouds3.equals("13d")){
-                        img1.setImageResource(R.drawable.snowing);
-                    }else if(tempClouds3.equals("01n")){
-                        img1.setImageResource(R.drawable.nights);
-                    }else if(tempClouds3.equals("02n")){
-                        img1.setImageResource(R.drawable.nights);
-                    }else if(tempClouds3.equals("03n")){
-                        img1.setImageResource(R.drawable.nights);
-                    }else if(tempClouds3.equals("04n")){
-                        img1.setImageResource(R.drawable.nights);
-                    }else if(tempClouds3.equals("09n")){
-                        img1.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds3.equals("10n")){
-                        img1.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds3.equals("11n")){
-                        img1.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds3.equals("13n")) {
-                        img1.setImageResource(R.drawable.nights);
-                    }
+                if(tempClouds3.equals("01d")){
+                    img1.setImageResource(R.drawable.sunny);
+                }else if(tempClouds3.equals("02d")){
+                    img1.setImageResource(R.drawable.sunny);
+                }else if(tempClouds3.equals("03d")){
+                    img1.setImageResource(R.drawable.clouds2);
+                }else if(tempClouds3.equals("04d")){
+                    img1.setImageResource(R.drawable.clouds2);
+                }else if(tempClouds3.equals("09d")){
+                    img1.setImageResource(R.drawable.rainy);
+                }else if(tempClouds3.equals("10d")){
+                    img1.setImageResource(R.drawable.rainy);
+                }else if(tempClouds3.equals("11d")){
+                    img1.setImageResource(R.drawable.thunder);
+                }else if(tempClouds3.equals("13d")){
+                    img1.setImageResource(R.drawable.snowing);
+                }else if(tempClouds3.equals("01n")){
+                    img1.setImageResource(R.drawable.nights);
+                }else if(tempClouds3.equals("02n")){
+                    img1.setImageResource(R.drawable.nights);
+                }else if(tempClouds3.equals("03n")){
+                    img1.setImageResource(R.drawable.nights);
+                }else if(tempClouds3.equals("04n")){
+                    img1.setImageResource(R.drawable.nights);
+                }else if(tempClouds3.equals("09n")){
+                    img1.setImageResource(R.drawable.rainy);
+                }else if(tempClouds3.equals("10n")){
+                    img1.setImageResource(R.drawable.rainy);
+                }else if(tempClouds3.equals("11n")){
+                    img1.setImageResource(R.drawable.rainy);
+                }else if(tempClouds3.equals("13n")) {
+                    img1.setImageResource(R.drawable.nights);
+                }
 
-                    String tempClouds6 = weather.hourly.get(6).weather.get(0).icon;
-                    //ArrayList<Integer> img = new ArrayList<>();
-                    if(tempClouds6.equals("01d")){
-                        img2.setImageResource(R.drawable.sunny);
-                    }else if(tempClouds6.equals("02d")){
-                        img2.setImageResource(R.drawable.sunny);
-                    }else if(tempClouds6.equals("03d")){
-                        img2.setImageResource(R.drawable.clouds2);
-                    }else if(tempClouds6.equals("04d")){
-                        img2.setImageResource(R.drawable.clouds2);
-                    }else if(tempClouds6.equals("09d")){
-                        img2.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds6.equals("10d")){
-                        img2.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds6.equals("11d")){
-                        img2.setImageResource(R.drawable.thunder);
-                    }else if(tempClouds6.equals("13d")){
-                        img2.setImageResource(R.drawable.snowing);
-                    }else if(tempClouds6.equals("01n")){
-                        img2.setImageResource(R.drawable.nights);
-                    }else if(tempClouds6.equals("02n")){
-                        img2.setImageResource(R.drawable.nights);
-                    }else if(tempClouds6.equals("03n")){
-                        img2.setImageResource(R.drawable.nights);
-                    }else if(tempClouds6.equals("04n")){
-                        img2.setImageResource(R.drawable.nights);
-                    }else if(tempClouds6.equals("09n")){
-                        img2.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds6.equals("10n")){
-                        img2.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds6.equals("11n")){
-                        img2.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds6.equals("13n")) {
-                        img2.setImageResource(R.drawable.nights);
-                    }
+                String tempClouds6 = weather.hourly.get(6).weather.get(0).icon;
+                //ArrayList<Integer> img = new ArrayList<>();
+                if(tempClouds6.equals("01d")){
+                    img2.setImageResource(R.drawable.sunny);
+                }else if(tempClouds6.equals("02d")){
+                    img2.setImageResource(R.drawable.sunny);
+                }else if(tempClouds6.equals("03d")){
+                    img2.setImageResource(R.drawable.clouds2);
+                }else if(tempClouds6.equals("04d")){
+                    img2.setImageResource(R.drawable.clouds2);
+                }else if(tempClouds6.equals("09d")){
+                    img2.setImageResource(R.drawable.rainy);
+                }else if(tempClouds6.equals("10d")){
+                    img2.setImageResource(R.drawable.rainy);
+                }else if(tempClouds6.equals("11d")){
+                    img2.setImageResource(R.drawable.thunder);
+                }else if(tempClouds6.equals("13d")){
+                    img2.setImageResource(R.drawable.snowing);
+                }else if(tempClouds6.equals("01n")){
+                    img2.setImageResource(R.drawable.nights);
+                }else if(tempClouds6.equals("02n")){
+                    img2.setImageResource(R.drawable.nights);
+                }else if(tempClouds6.equals("03n")){
+                    img2.setImageResource(R.drawable.nights);
+                }else if(tempClouds6.equals("04n")){
+                    img2.setImageResource(R.drawable.nights);
+                }else if(tempClouds6.equals("09n")){
+                    img2.setImageResource(R.drawable.rainy);
+                }else if(tempClouds6.equals("10n")){
+                    img2.setImageResource(R.drawable.rainy);
+                }else if(tempClouds6.equals("11n")){
+                    img2.setImageResource(R.drawable.rainy);
+                }else if(tempClouds6.equals("13n")) {
+                    img2.setImageResource(R.drawable.nights);
+                }
 
-                    String tempClouds9 = weather.hourly.get(9).weather.get(0).icon;
-                    //ArrayList<Integer> img = new ArrayList<>();
-                    if(tempClouds9.equals("01d")){
-                        img3.setImageResource(R.drawable.sunny);
-                    }else if(tempClouds9.equals("02d")){
-                        img3.setImageResource(R.drawable.sunny);
-                    }else if(tempClouds9.equals("03d")){
-                        img3.setImageResource(R.drawable.clouds2);
-                    }else if(tempClouds9.equals("04d")){
-                        img3.setImageResource(R.drawable.clouds2);
-                    }else if(tempClouds9.equals("09d")){
-                        img3.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds9.equals("10d")){
-                        img3.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds9.equals("11d")){
-                        img3.setImageResource(R.drawable.thunder);
-                    }else if(tempClouds9.equals("13d")){
-                        img3.setImageResource(R.drawable.snowing);
-                    }else if(tempClouds9.equals("01n")){
-                        img3.setImageResource(R.drawable.nights);
-                    }else if(tempClouds9.equals("02n")){
-                        img3.setImageResource(R.drawable.nights);
-                    }else if(tempClouds9.equals("03n")){
-                        img3.setImageResource(R.drawable.nights);
-                    }else if(tempClouds9.equals("04n")){
-                        img3.setImageResource(R.drawable.nights);
-                    }else if(tempClouds9.equals("09n")){
-                        img3.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds9.equals("10n")){
-                        img3.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds9.equals("11n")){
-                        img3.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds9.equals("13n")) {
-                        img3.setImageResource(R.drawable.nights);
-                    }
+                String tempClouds9 = weather.hourly.get(9).weather.get(0).icon;
+                //ArrayList<Integer> img = new ArrayList<>();
+                if(tempClouds9.equals("01d")){
+                    img3.setImageResource(R.drawable.sunny);
+                }else if(tempClouds9.equals("02d")){
+                    img3.setImageResource(R.drawable.sunny);
+                }else if(tempClouds9.equals("03d")){
+                    img3.setImageResource(R.drawable.clouds2);
+                }else if(tempClouds9.equals("04d")){
+                    img3.setImageResource(R.drawable.clouds2);
+                }else if(tempClouds9.equals("09d")){
+                    img3.setImageResource(R.drawable.rainy);
+                }else if(tempClouds9.equals("10d")){
+                    img3.setImageResource(R.drawable.rainy);
+                }else if(tempClouds9.equals("11d")){
+                    img3.setImageResource(R.drawable.thunder);
+                }else if(tempClouds9.equals("13d")){
+                    img3.setImageResource(R.drawable.snowing);
+                }else if(tempClouds9.equals("01n")){
+                    img3.setImageResource(R.drawable.nights);
+                }else if(tempClouds9.equals("02n")){
+                    img3.setImageResource(R.drawable.nights);
+                }else if(tempClouds9.equals("03n")){
+                    img3.setImageResource(R.drawable.nights);
+                }else if(tempClouds9.equals("04n")){
+                    img3.setImageResource(R.drawable.nights);
+                }else if(tempClouds9.equals("09n")){
+                    img3.setImageResource(R.drawable.rainy);
+                }else if(tempClouds9.equals("10n")){
+                    img3.setImageResource(R.drawable.rainy);
+                }else if(tempClouds9.equals("11n")){
+                    img3.setImageResource(R.drawable.rainy);
+                }else if(tempClouds9.equals("13n")) {
+                    img3.setImageResource(R.drawable.nights);
+                }
 
-                    String tempClouds12 = weather.hourly.get(12).weather.get(0).icon;
-                    //ArrayList<Integer> img = new ArrayList<>();
-                    if(tempClouds12.equals("01d")){
-                        img4.setImageResource(R.drawable.sunny);
-                    }else if(tempClouds12.equals("02d")){
-                        img4.setImageResource(R.drawable.sunny);
-                    }else if(tempClouds12.equals("03d")){
-                        img4.setImageResource(R.drawable.clouds2);
-                    }else if(tempClouds12.equals("04d")){
-                        img4.setImageResource(R.drawable.clouds2);
-                    }else if(tempClouds12.equals("09d")){
-                        img4.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds12.equals("10d")){
-                        img4.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds12.equals("11d")){
-                        img4.setImageResource(R.drawable.thunder);
-                    }else if(tempClouds12.equals("13d")){
-                        img4.setImageResource(R.drawable.snowing);
-                    }else if(tempClouds12.equals("01n")){
-                        img4.setImageResource(R.drawable.nights);
-                    }else if(tempClouds12.equals("02n")){
-                        img4.setImageResource(R.drawable.nights);
-                    }else if(tempClouds12.equals("03n")){
-                        img4.setImageResource(R.drawable.nights);
-                    }else if(tempClouds12.equals("04n")){
-                        img4.setImageResource(R.drawable.nights);
-                    }else if(tempClouds12.equals("09n")){
-                        img4.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds12.equals("10n")){
-                        img4.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds12.equals("11n")){
-                        img4.setImageResource(R.drawable.rainy);
-                    }else if(tempClouds12.equals("13n")) {
-                        img4.setImageResource(R.drawable.nights);}
+                String tempClouds12 = weather.hourly.get(12).weather.get(0).icon;
+                //ArrayList<Integer> img = new ArrayList<>();
+                if(tempClouds12.equals("01d")){
+                    img4.setImageResource(R.drawable.sunny);
+                }else if(tempClouds12.equals("02d")){
+                    img4.setImageResource(R.drawable.sunny);
+                }else if(tempClouds12.equals("03d")){
+                    img4.setImageResource(R.drawable.clouds2);
+                }else if(tempClouds12.equals("04d")){
+                    img4.setImageResource(R.drawable.clouds2);
+                }else if(tempClouds12.equals("09d")){
+                    img4.setImageResource(R.drawable.rainy);
+                }else if(tempClouds12.equals("10d")){
+                    img4.setImageResource(R.drawable.rainy);
+                }else if(tempClouds12.equals("11d")){
+                    img4.setImageResource(R.drawable.thunder);
+                }else if(tempClouds12.equals("13d")){
+                    img4.setImageResource(R.drawable.snowing);
+                }else if(tempClouds12.equals("01n")){
+                    img4.setImageResource(R.drawable.nights);
+                }else if(tempClouds12.equals("02n")){
+                    img4.setImageResource(R.drawable.nights);
+                }else if(tempClouds12.equals("03n")){
+                    img4.setImageResource(R.drawable.nights);
+                }else if(tempClouds12.equals("04n")){
+                    img4.setImageResource(R.drawable.nights);
+                }else if(tempClouds12.equals("09n")){
+                    img4.setImageResource(R.drawable.rainy);
+                }else if(tempClouds12.equals("10n")){
+                    img4.setImageResource(R.drawable.rainy);
+                }else if(tempClouds12.equals("11n")){
+                    img4.setImageResource(R.drawable.rainy);
+                }else if(tempClouds12.equals("13n")) {
+                    img4.setImageResource(R.drawable.nights);}
 
-
-                //temp
-                Double temp = weather.current.temp;
-                int tempk = Integer.parseInt(String.valueOf(Math.round(temp)));
-                tv_temp.setText(tempk+"ºC");
 
                 //temp
+
+                if (switchMultiButton.getSelectedTab() == 1) {
+                    Double temp = weather.current.temp;
+                    int tempk = Integer.parseInt(String.valueOf(Math.round(temp)));
+                    tv_temp.setText(tempk+"ºC");
+                }else {
+                    Double temp = weather.hourly.get(12).temp;
+                    int tempk = Integer.parseInt(String.valueOf(Math.round(temp)));
+                    tv_temp.setText(tempk+"ºC");
+                }
+
+                //Double temp = weather.hourly.get(12).temp;
+
+                //temp
+
                 Double windSpeed = weather.current.wind_speed;
                 int windSpeed2 = Integer.parseInt(String.valueOf(Math.round(windSpeed)));
                 tv_windspeed.setText("풍속 : "+windSpeed2+"m/s");
@@ -357,7 +367,7 @@ public class weatherFragment extends Fragment {
 
                 // Start Index at 0.
                 ArrayList<Integer> timeList = new ArrayList<>();
-                timeList.add(3);timeList.add(5);timeList.add(8);timeList.add(11);
+                timeList.add(3);timeList.add(6);timeList.add(9);timeList.add(12);
                 ArrayList<TextView> tempTextViewList = new ArrayList<>();
                 tempTextViewList.add(temp1);tempTextViewList.add(temp2);
                 tempTextViewList.add(temp3);tempTextViewList.add(temp4);
@@ -365,6 +375,7 @@ public class weatherFragment extends Fragment {
                 ArrayList<TextView> timeTextViewList = new ArrayList<>();
                 timeTextViewList.add(time1);timeTextViewList.add(time2);
                 timeTextViewList.add(time3);timeTextViewList.add(time4);
+
 
 //                ArrayList<TextView> imgLinearLayout = new ArrayList<>();
 //                imgLinearLayout.add();imgLinearLayout.add();
@@ -376,7 +387,7 @@ public class weatherFragment extends Fragment {
 
                     Integer addedTimeIndex = timeIndex;
                     if (switchMultiButton.getSelectedTab() == 1) {
-                        addedTimeIndex += 10;
+                        addedTimeIndex += 11;
                     }
                     int index =timeList.indexOf(timeIndex);
 
@@ -389,6 +400,7 @@ public class weatherFragment extends Fragment {
                             weather.hourly.get(addedTimeIndex),
                             timeTextViewList.get(index)
                     );
+
                 }
             }
         }, new Response.ErrorListener() {
@@ -423,7 +435,4 @@ public class weatherFragment extends Fragment {
         Date df = new java.util.Date(dv);
         textView.setText(new SimpleDateFormat("hh").format(df)+"시");
     }
-
-
 }
-

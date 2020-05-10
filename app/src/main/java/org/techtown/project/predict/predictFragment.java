@@ -65,8 +65,10 @@ public class predictFragment extends Fragment {
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
 
-        tv_predict = v.findViewById(R.id.tv_predict);
-        tv_time = v.findViewById(R.id.tv_view);
+        tv_predict = v.findViewById(R.id.tv_predict1);
+        tv_time = v.findViewById(R.id.tv_time1);
+        tv_predict.setVisibility(View.INVISIBLE);
+        tv_time.setVisibility(View.INVISIBLE);
 
         sendRequest();
 
@@ -167,10 +169,9 @@ public class predictFragment extends Fragment {
                         mChart.getAxisLeft().setDrawGridLines(false);
                         mChart.getAxisRight().setDrawGridLines(false);
                         progressBar.setVisibility(View.GONE);
-
-
-
-                        }
+                        tv_predict.setVisibility(View.VISIBLE);
+                        tv_time.setVisibility(View.VISIBLE);
+                    }
                 },
                 new Response.ErrorListener() { //에러발생시 호출될 리스너 객체
                     @Override

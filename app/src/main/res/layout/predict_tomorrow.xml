@@ -42,7 +42,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="false"
         android:layout_marginTop="68dp"
-        android:text="태양광 예측 발전량"
+        android:text="내일 예측 발전량"
         android:textAlignment="center"
         android:textColor="?attr/colorButtonNormal"
         android:textColorHighlight="?attr/colorButtonNormal"

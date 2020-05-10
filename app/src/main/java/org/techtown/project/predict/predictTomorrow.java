@@ -47,6 +47,7 @@ public class predictTomorrow extends Fragment {
         Predict predict = null;
         ProgressBar progressBar2;
         Button btn_today1, btn_tomorrow1;
+        TextView tv_predict, tv_time;
         View v;
 
         public View onCreateView(@NonNull LayoutInflater inflater,
@@ -58,12 +59,17 @@ public class predictTomorrow extends Fragment {
             Log.v("hhd","tomorrow hi");
             // Log.v("hhd","응답 => " + response);
 
+            tv_predict = v.findViewById(R.id.tv_predict);
+            tv_time = v.findViewById(R.id.tv_time);
             mChart = v.findViewById(R.id.linechart2);
             mChart.setDragEnabled(true);
             mChart.setScaleEnabled(false);
+            progressBar2.setVisibility(View.VISIBLE);
+            tv_time.setVisibility(View.INVISIBLE);
+            tv_predict.setVisibility(View.INVISIBLE);
             sendRequest();
             progressBar2 = v.findViewById(R.id.predictProgressBar2);
-            progressBar2.setVisibility(View.VISIBLE);
+
             btn_today1 = v.findViewById(R.id.btn_today1);
             btn_tomorrow1 = v.findViewById(R.id.btn_tomorrow1);
 
@@ -157,6 +163,8 @@ public class predictTomorrow extends Fragment {
                             mChart.getAxisLeft().setDrawGridLines(false);
                             mChart.getAxisRight().setDrawGridLines(false);
                             progressBar2.setVisibility(View.GONE);
+                            tv_time.setVisibility(View.VISIBLE);
+                            tv_predict.setVisibility(View.VISIBLE);
                         }
                     },
                     new Response.ErrorListener() { //에러발생시 호출될 리스너 객체

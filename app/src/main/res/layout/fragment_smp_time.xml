@@ -91,4 +91,26 @@
         android:singleLine="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <TextView
+        android:id="@+id/tv_label2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="196dp"
+        android:text="단위 : 원/kWh"
+        android:textColor="#393535"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_smp2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMP"
+        android:textColor="#393535"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_label2"
+        app:layout_constraintStart_toStartOf="@+id/tv_label2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

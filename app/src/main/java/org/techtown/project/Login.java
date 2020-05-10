@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity {
         }
     }
     public void testJson(){
-        String url = "http://192.168.56.1:8087/solgit/Login";
+        String url = "http://172.30.1.53:8087/solgit/Login";
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.MarkerView;
@@ -30,6 +31,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
@@ -46,6 +48,7 @@ public class smp_time extends Fragment {
     private RequestQueue requestQueue;
     private LineChart mChart;
     private ProgressBar progressBar;
+    TextView tv_label2, tv_smp2;
     Button btn_time;
     ArrayList<Float> smp_present_list = new ArrayList<>();
     ArrayList<Float> smp_future1_list = new ArrayList<>();
@@ -61,6 +64,10 @@ public class smp_time extends Fragment {
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
 
+        tv_label2 = view.findViewById(R.id.tv_label2);
+        tv_smp2 = view.findViewById(R.id.tv_smp2);
+        tv_label2.setVisibility(View.INVISIBLE);
+        tv_smp2.setVisibility(view.INVISIBLE);
         sendRequest();
         progressBar = view.findViewById(R.id.timeProgressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -147,7 +154,13 @@ public class smp_time extends Fragment {
                         yAxisRight.setDrawLabels(false);
                         yAxisRight.setDrawAxisLine(false);
                         yAxisRight.setDrawGridLines(false);
+
                         mChart.setDescription(null);
+
+                        Legend l = mChart.getLegend();
+                        l.setForm(Legend.LegendForm.LINE);
+                        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+                        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
 
                         MyMarkerView marker = new MyMarkerView(getContext(), R.layout.maker_item);
 
@@ -166,6 +179,8 @@ public class smp_time extends Fragment {
                         mChart.notifyDataSetChanged();
                         mChart.invalidate();
                         progressBar.setVisibility(View.GONE);
+                        tv_label2.setVisibility(View.VISIBLE);
+                        tv_smp2.setVisibility(View.VISIBLE);
                     }
                 },
                 new Response.ErrorListener(){ //에러발생시 호출될 리스너 객체

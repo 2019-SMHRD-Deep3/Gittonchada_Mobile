@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -55,7 +56,7 @@ public class smp_main extends Fragment {
     ArrayList<Float> smplist = new ArrayList<>();
     View view;
     Context ct;
-    TextView tv_max;
+    TextView tv_max, tv_lebel,tv_smp1;
     // Fragment
     private RequestQueue requestQueue;
 
@@ -66,10 +67,13 @@ public class smp_main extends Fragment {
         if (this.getContext() != null) {
             requestQueue = Volley.newRequestQueue(this.getContext());
         }
-
+        tv_lebel = view.findViewById(R.id.tv_label);
+        tv_smp1 = view.findViewById(R.id.tv_smp1);
         mChart = view.findViewById(R.id.smp_chart);
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
+        tv_lebel.setVisibility(view.INVISIBLE);
+        tv_smp1.setVisibility(view.INVISIBLE);
         sendRequest();
 
         progressBar = view.findViewById(R.id.dailyProgressBar);
@@ -118,7 +122,7 @@ public class smp_main extends Fragment {
                         mChart.getXAxis().setDrawGridLines(false);
                         mChart.getAxisLeft().setDrawGridLines(false);
                         mChart.getAxisRight().setDrawGridLines(false);
-                        set1.setDrawValues(false);
+                        set1.setDrawValues(true);
                         set1.setCircleRadius(1f);
                         set1.setFillAlpha(110);
                         set1.setColor(Color.rgb(255,131,85));
@@ -149,11 +153,17 @@ public class smp_main extends Fragment {
                         mChart.notifyDataSetChanged();
                         mChart.invalidate();
 
-                        tv_max = view.findViewById(R.id.tv_maxvalue);
-                        tv_max.setText(list.get(26).getPresent()+"");
+                        Legend l = mChart.getLegend();
+                        l.setForm(Legend.LegendForm.LINE);
+                        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+                        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
 
+                        Log.v("hhd",list.get(26).getPresent()+"");
 
                         progressBar.setVisibility(View.GONE);
+
+                        tv_lebel.setVisibility(view.VISIBLE);
+                        tv_smp1.setVisibility(view.VISIBLE);
                     }
                 },
                 new Response.ErrorListener(){ //에러발생시 호출될 리스너 객체
